@@ -14,32 +14,43 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
-            background-color: #ffffff; /* Fondo blanco para eliminar bordes grises */
+            background-color: #ffffff;
             overflow: hidden;
         }
 
-        /* --- Cabecera con el color solicitado #4AB37F --- */
-        .header {
-            background-color: #295F62; 
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between; /* Logo/Título a la izq, Redes a la der */
-            align-items: center;
-            height: 70px; /* Un poco más alta para el logo y título */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 10;
-        }
-
-        /* Contenedor Izquierdo: Logo + Título */
-        .header-left {
+        /* --- Franja Superior Blanca para el Logo --- */
+        .logo-bar {
+            background-color: #ffffff;
+            height: 80px;
             display: flex;
             align-items: center;
+            padding: 0 40px;
+            border-bottom: 1px solid #eeeeee;
         }
 
         .logo {
-            height: 50px; /* Ajusta el tamaño de tu logo */
-            margin-right: 15px;
-            border-radius: 4px;
+            height: 60px; /* Tamaño optimizado para claridad */
+            width: auto;
+        }
+
+        /* --- Franja de Color para Título y Redes (#4AB37F) --- */
+        .header {
+            background-color: #4AB37F; 
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            height: 50px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative; /* Necesario para centrar el título con exactitud */
+        }
+
+        /* Título Centralizado */
+        .title-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%; /* Evita que choque con los iconos en pantallas chicas */
+            text-align: center;
         }
 
         .title {
@@ -47,56 +58,62 @@
             font-size: 1.1rem;
             font-weight: 600;
             margin: 0;
+            letter-spacing: 0.5px;
         }
 
         /* Contenedor Derecho: Redes Sociales */
         .header-right {
+            margin-left: auto; /* Empuja las redes a la derecha */
             display: flex;
             align-items: center;
+            z-index: 5;
         }
 
         .social-link {
             margin-left: 15px;
-            transition: opacity 0.2s;
+            transition: transform 0.2s;
         }
 
         .social-link:hover {
-            opacity: 0.8;
+            transform: scale(1.1);
         }
 
         .icon {
-            width: 26px;
-            height: 26px;
-            fill: white; /* Iconos en blanco para que resalten en el verde */
+            width: 24px;
+            height: 24px;
+            fill: white;
         }
 
-        /* --- Contenedor del Panel (Ajuste máximo al lienzo) --- */
+        /* --- Contenedor del Panel Power BI --- */
         .main-content {
             flex: 1;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: white; /* Fondo blanco para fundirse con el panel */
+            background-color: white;
         }
 
         iframe {
             width: 100%;
-            height: 100%; /* Ocupa todo el espacio disponible */
+            height: 100%;
             border: none;
         }
 
         /* Ajustes para móviles */
-        @media (max-width: 600px) {
-            .title { font-size: 0.8rem; }
-            .header { padding: 0 10px; }
+        @media (max-width: 768px) {
+            .logo-bar { height: 60px; justify-content: center; padding: 0; }
+            .logo { height: 45px; }
+            .title { font-size: 0.85rem; }
+            .header-right { display: none; } /* Oculta redes en móvil para priorizar título */
         }
     </style>
 </head>
 <body>
 
+    <div class="logo-bar">
+        <img src="logo_cluster.png" alt="Logo CCMRA" class="logo">
+    </div>
+
     <header class="header">
-        <div class="header-left">
-            <img src="logo_cluster.png" alt="Logo CCMRA" class="logo">
+        <div class="title-container">
             <h1 class="title">Corporación Clúster Minero de la Región de Antofagasta</h1>
         </div>
 
